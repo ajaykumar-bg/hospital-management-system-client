@@ -75,7 +75,7 @@ const ListSpecialize = () => {
 							<thead>
 								<tr>
 									<th scope='col'>Id</th>
-									<th scope='col'>name</th>
+									<th scope='col'>Name</th>
 									<th scope='col'>Description</th>
 									<th scope='col'>Edit</th>
 									<th scope='col'>Delete</th>
@@ -85,22 +85,20 @@ const ListSpecialize = () => {
 								{specializations &&
 									specializations.map((special, i) => (
 										<tr key={i}>
-											<Fragment>
-												<th scope='row'>{special._id}</th>
-												<td>{special.name}</td>
-												<td>{special.description}</td>
-												<td>
-													<Link to={`/update-specialize/${special._id}`}>
-														<i className='bi bi-pencil-square'></i>
-													</Link>
-												</td>
-												<td>
-													<i
-														className='bi bi-trash'
-														onClick={() => deleteHandler(special._id)}
-													></i>
-												</td>
-											</Fragment>
+											<th scope='row'>{special._id}</th>
+											<td>{special.name}</td>
+											<td>{special.description}</td>
+											<td>
+												<Link to={`/update-specialize/${special._id}`}>
+													<i className='bi bi-pencil-square'></i>
+												</Link>
+											</td>
+											<td>
+												<i
+													className='bi bi-trash'
+													onClick={() => deleteHandler(special._id)}
+												></i>
+											</td>
 										</tr>
 									))}
 							</tbody>

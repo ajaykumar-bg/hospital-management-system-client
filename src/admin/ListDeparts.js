@@ -81,7 +81,7 @@ const ListDeparts = () => {
 									<th scope='col'>Id</th>
 									<th scope='col'>name</th>
 									<th scope='col'>Head</th>
-									<th scope='col'>Address</th>
+									<th scope='col'>Description</th>
 									<th scope='col'>Floor</th>
 									<th scope='col'>Phone No</th>
 									<th scope='col'>Edit</th>
@@ -96,7 +96,7 @@ const ListDeparts = () => {
 												<th scope='row'>{dep._id}</th>
 												<td>{dep.name}</td>
 												<td>{dep.head}</td>
-												<td>{dep.address}</td>
+												<td>{dep.description}</td>
 												<td>{dep.floor.name}</td>
 												<td>{dep.phone}</td>
 												<td>

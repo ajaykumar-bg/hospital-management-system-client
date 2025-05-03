@@ -4,7 +4,6 @@ import '../styles.css';
 import Menu from './Menu';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { withRouter } from '../withRouter';
 
 // history must match with path which is /signup e.g
 const isActive = (history, path) => {
@@ -90,4 +89,4 @@ const DocLayout = ({ children, history }) => {
 	);
 };
 
-export default withRouter(DocLayout);
+export default DocLayout;

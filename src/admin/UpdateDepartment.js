@@ -14,7 +14,7 @@ const UpdateDepartment = () => {
 
 	const [name, setName] = useState('');
 	const [head, setHead] = useState('');
-	const [address, setAddress] = useState('');
+	const [description, setDescription] = useState('');
 	const [floor, setFloor] = useState('');
 	const [phone, setPhone] = useState('');
 
@@ -44,7 +44,7 @@ const UpdateDepartment = () => {
 			} else {
 				setName(depart.name);
 				setHead(depart.head);
-				setAddress(depart.address);
+				setDescription(depart.description);
 				setFloor(depart.floor);
 			}
 		}
@@ -52,7 +52,7 @@ const UpdateDepartment = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		dispatch(updateDeparts({ _id: id, name, floor, head, address, phone }));
+		dispatch(updateDeparts({ _id: id, name, floor, head, description, phone }));
 	};
 
 	const showError = () => (
@@ -124,15 +124,15 @@ const UpdateDepartment = () => {
 				<div className='col-md-8'>
 					<div className='form-group'>
 						<label className='small mb-1' htmlFor='description'>
-							Address
+							Description
 						</label>
 						<input
 							className='form-control py-4'
-							type='name'
-							aria-describedby='emailHelp'
-							placeholder='Enter Address'
-							value={address}
-							onChange={(e) => setAddress(e.target.value)}
+							type='text'
+							aria-describedby='desc'
+							placeholder='Enter description'
+							value={description}
+							onChange={(e) => setDescription(e.target.value)}
 						/>
 					</div>
 				</div>

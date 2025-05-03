@@ -9,7 +9,7 @@ const AddDepartment = () => {
 	const navigate = useNavigate();
 	const [name, setName] = useState('');
 	const [head, setHead] = useState('');
-	const [address, setAddress] = useState('');
+	const [description, setDescription] = useState('');
 	const [floor, setFloor] = useState('');
 	const [phone, setPhone] = useState('');
 
@@ -34,7 +34,7 @@ const AddDepartment = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		dispatch(createDepart({ name, head, address, floor, phone }));
+		dispatch(createDepart({ name, head, description, floor, phone }));
 		navigate('/list-departs');
 	};
 
@@ -98,15 +98,15 @@ const AddDepartment = () => {
 				<div className='col-md-8'>
 					<div className='form-group'>
 						<label className='small mb-1' htmlFor='description'>
-							Address
+							Description
 						</label>
 						<input
 							className='form-control py-4'
 							type='name'
 							aria-describedby='emailHelp'
-							placeholder='Enter Address'
-							value={address}
-							onChange={(e) => setAddress(e.target.value)}
+							placeholder='Enter description'
+							value={description}
+							onChange={(e) => setDescription(e.target.value)}
 						/>
 					</div>
 				</div>

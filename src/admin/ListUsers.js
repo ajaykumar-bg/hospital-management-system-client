@@ -14,8 +14,6 @@ const ListUsers = () => {
 	const userList = useSelector((state) => state.userList);
 	const { loading, error, users } = userList;
 
-	//console.log(users)
-
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
@@ -34,9 +32,12 @@ const ListUsers = () => {
 	// };
 
 	useEffect(() => {
+		setData(users);
+	}, [users]);
+
+	useEffect(() => {
 		if (userInfo && userInfo.role === Roles.ADMIN) {
 			dispatch(listUsers());
-			//setData(users)
 		} else {
 			navigate('/login');
 		}
@@ -70,7 +71,7 @@ const ListUsers = () => {
 
 	const countUsers = () => {
 		//return results && results.length
-		return data && data.length;
+		return data && data?.length;
 	};
 
 	const indexOfLastUser = activePage * itemPerPage;
@@ -152,9 +153,9 @@ const ListUsers = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{data.length !== 0 ? (
+								{data?.length !== 0 ? (
 									data
-										.slice(indexOfFirstUser, indexOfLastUser)
+										?.slice(indexOfFirstUser, indexOfLastUser)
 										.map((user, i) => (
 											<tr key={i}>
 												<th scope='row'>{user._id}</th>
@@ -236,9 +237,11 @@ const ListUsers = () => {
 											</tr>
 										))
 								) : (
-									<td>
-										<b>No Users found</b>
-									</td>
+									<tr>
+										<td>
+											<b>No Users found</b>
+										</td>
+									</tr>
 								)}
 							</tbody>
 						</table>
