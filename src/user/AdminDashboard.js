@@ -35,13 +35,9 @@ const AdminDashboard = () => {
 	const expenseList = useSelector((state) => state.expenseList);
 	const { expenses } = expenseList;
 
-	console.log(expenses);
-
 	//  appointments
 	const vaccineAppList = useSelector((state) => state.vaccineAppList);
 	let { appointments } = vaccineAppList;
-
-	console.log(appointments);
 
 	// calculate total amount of expenses
 	const totalExpenses = () => {
@@ -59,8 +55,6 @@ const AdminDashboard = () => {
 	// prescription list Data
 	const prescList = useSelector((state) => state.prescList);
 	const { prescriptions } = prescList;
-
-	console.log(prescriptions);
 
 	// calculate total amount paid in prescription Module
 	const totalCollected = () => {
@@ -80,7 +74,6 @@ const AdminDashboard = () => {
 	// tests list Data
 	const listTestResult = useSelector((state) => state.listTestResult);
 	const { tests } = listTestResult;
-	console.log(tests);
 
 	// calculate total amount paid in tests Module
 	const totalCollected1 = () => {
@@ -146,9 +139,6 @@ const AdminDashboard = () => {
 						notVaccinated++;
 					}
 				});
-
-		console.log(`total vaccinated number is`, vaccinated);
-		console.log(`total Notvaccinated number is`, notVaccinated);
 		return { vaccinated, notVaccinated };
 	};
 
@@ -177,7 +167,6 @@ const AdminDashboard = () => {
 		let nurse = 0;
 
 		for (let user of users) {
-			//console.log(users)
 			if (user.role === 0) {
 				admin++;
 			} else if (user.role === 1) {
@@ -192,8 +181,6 @@ const AdminDashboard = () => {
 				return null;
 			}
 		}
-
-		console.log(admin, doc, patient, staff);
 
 		return { admin, doc, patient, staff, nurse };
 	};
@@ -211,8 +198,6 @@ const AdminDashboard = () => {
 			(label, index) => `${label}: ${usersList[index]}`
 		);
 
-		console.log(usersList);
-
 		return { labels, customLabels, usersList };
 	};
 
@@ -226,8 +211,6 @@ const AdminDashboard = () => {
 				amountList.push(expense.amount);
 				expenseNames.push(expense.name);
 			});
-
-		console.log(`the amount list is `, amountList);
 
 		return { amountList, expenseNames };
 	};

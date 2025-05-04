@@ -4,6 +4,7 @@ import Layout from '../core/Layout';
 import { getUsersDetails, updateUsersProfile } from '../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { USERS_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import { ROLE_TYPES } from '../constants/roles';
 
 const UpdateUsers = ({ match, history }) => {
 	const navigate = useNavigate();
@@ -63,15 +64,12 @@ const UpdateUsers = ({ match, history }) => {
 			<div className='form-row'>
 				<div className='col-md-8'>
 					<div className='form-group'>
-						<label
-							className='small mb-1 font-weight-bold'
-							htmlFor='inputFirstName'
-						>
+						<label className='small mb-1 font-weight-bold' htmlFor='inputName'>
 							Enter Name
 						</label>
 						<input
 							className='form-control py-4'
-							id='inputFirstName'
+							id='inputName'
 							type='name'
 							placeholder='Enter name'
 							value={name}
@@ -83,34 +81,35 @@ const UpdateUsers = ({ match, history }) => {
 			<div className='form-row'>
 				<div className='col-md-8'>
 					<div className='form-group'>
-						<label
-							className='small mb-1 font-weight-bold'
-							htmlFor='inputFirstName'
-						>
+						<label className='small mb-1 font-weight-bold' htmlFor='inputRole'>
 							Enter role
 						</label>
-						<input
-							className='form-control py-4'
-							id='inputFirstName'
-							type='role'
-							placeholder='Enter name'
+						<select
+							id='role'
 							value={role}
 							onChange={(e) => setRole(e.target.value)}
-						/>
+							className='form-control'
+						>
+							<option value=''>Please select a role</option>
+							{ROLE_TYPES &&
+								ROLE_TYPES.map((c, i) => (
+									<option key={i} value={c.id}>
+										{c.text}
+									</option>
+								))}
+						</select>
 					</div>
 				</div>
 			</div>
 			<div className='form-row'>
 				<div className='col-md-8'>
 					<div className='form-group'>
-						<label
-							className='small mb-1 font-weight-bold'
-							htmlFor='inputEmailAddress'
-						>
+						<label className='small mb-1 font-weight-bold' htmlFor='inputEmail'>
 							Email
 						</label>
 						<input
 							className='form-control py-4'
+							id='inputEmail'
 							type='email'
 							aria-describedby='emailHelp'
 							placeholder='Enter email address'
@@ -131,6 +130,7 @@ const UpdateUsers = ({ match, history }) => {
 						</label>
 						<input
 							className='form-control py-4'
+							id='inputPassword'
 							type='password'
 							placeholder='Enter password'
 							value={password}
@@ -148,6 +148,7 @@ const UpdateUsers = ({ match, history }) => {
 						</label>
 						<input
 							className='form-control py-4'
+							id='inputConfirmPassword'
 							type='password'
 							placeholder='Confirm password'
 							value={confirmPassword}

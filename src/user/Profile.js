@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import { ROLE_TYPES } from '../constants/roles';
 
 const Profile = () => {
 	const navigate = useNavigate();
@@ -60,15 +61,12 @@ const Profile = () => {
 			<div className='form-row'>
 				<div className='col-md-8'>
 					<div className='form-group'>
-						<label
-							className='small mb-1 font-weight-bold'
-							htmlFor='inputFirstName'
-						>
+						<label className='small mb-1 font-weight-bold' htmlFor='inputName'>
 							Enter Name
 						</label>
 						<input
 							className='form-control py-4'
-							id='inputFirstName'
+							id='inputName'
 							type='name'
 							placeholder='Enter name'
 							value={name}
@@ -81,36 +79,36 @@ const Profile = () => {
 			<div className='form-row'>
 				<div className='col-md-8'>
 					<div className='form-group'>
-						<label
-							className='small mb-1 font-weight-bold'
-							htmlFor='inputFirstName'
-						>
+						<label className='small mb-1 font-weight-bold' htmlFor='inputRole'>
 							Enter role
 						</label>
-						<input
-							className='form-control py-4'
-							id='inputFirstName'
-							type='role'
-							placeholder='Enter name'
+						<select
+							id='role'
 							value={role}
 							onChange={(e) => setRole(e.target.value)}
-							disabled
-						/>
+							className='form-control'
+						>
+							<option value=''>Please select a role</option>
+							{ROLE_TYPES &&
+								ROLE_TYPES.map((c, i) => (
+									<option key={i} value={c.id}>
+										{c.text}
+									</option>
+								))}
+						</select>
 					</div>
 				</div>
 			</div>
 			<div className='form-row'>
 				<div className='col-md-8'>
 					<div className='form-group'>
-						<label
-							className='small mb-1 font-weight-bold'
-							htmlFor='inputEmailAddress'
-						>
+						<label className='small mb-1 font-weight-bold' htmlFor='inputEmail'>
 							Email
 						</label>
 						<input
 							className='form-control py-4'
 							type='email'
+							id='inputEmail'
 							aria-describedby='emailHelp'
 							placeholder='Enter email address'
 							value={email}
@@ -131,6 +129,7 @@ const Profile = () => {
 						</label>
 						<input
 							className='form-control py-4'
+							id='inputPassword'
 							type='password'
 							placeholder='Enter password'
 							value={password}
@@ -149,6 +148,7 @@ const Profile = () => {
 						</label>
 						<input
 							className='form-control py-4'
+							id='inputConfirmPassword'
 							type='password'
 							placeholder='Confirm password'
 							value={confirmPassword}
